@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+* {
+  font-family: "Roboto", "Open Sans", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.ps {
+  &-absolute {
+    position: absolute !important;
+  }
+  &-static {
+    position: static !important;
+  }
+  &-relative {
+    position: relative !important;
+  }
+  &-fixed {
+    position: fixed !important;
+  }
+}
+
+.typo {
+  &-grap {
+    font-weight: 300;
+    &__sz-1 {
+      font-size: 32px !important;
+      text-align: justify;
+    }
+    &__sz-2 {
+      font-size: 28px !important;
+      text-align: justify;
+      line-height: 56px;
+    }
+    &__sz-3 {
+      font-size: 24px !important;
+      text-align: justify;
+    }
+    &__sz-4 {
+      font-size: 22px !important;
+      text-align: justify;
+    }
+    &__sz-5 {
+      font-size: 18px !important;
+      text-align: justify;
+      line-height: 36 px;
+    }
+    &__sz-6 {
+      font-size: 16px !important;
+      text-align: justify;
+    }
+    &__sz-7 {
+      font-size: 14px !important;
+      text-align: justify;
+    }
+    &__sz-8 {
+      font-size: 12px !important;
+      text-align: justify;
+    }
+  }
+  &-title {
+    font-weight: 700;
+    &__title-1 {
+      font-size: 22px;
+    }
+    &__title-2 {
+      font-size: 18px;
+    }
+    &__title-3 {
+      font-weight: 600 !important;
+      font-size: 16px;
+    }
+    &__title-4 {
+      font-weight: 600 !important;
+      font-size: 14px;
+    }
+  }
+}
+
+.z-index {
+  &-1 {
+    z-index: 1 !important;
+  }
+  &-2 {
+    z-index: 2 !important;
+  }
+  &-3 {
+    z-index: 3 !important;
+  }
+  &-4 {
+    z-index: 4 !important;
+  }
+}
+
+.img {
+  &-h18 {
+    height: 18px;
+  }
+  &-h25 {
+    height: 25px;
+  }
+  &-h40 {
+    height: 40px;
+  }
+  &-h50 {
+    height: 50px;
+  }
+  &-h80 {
+    height: 80px;
+  }
+  &-h100 {
+    height: 100px;
+  }
+}
+
+.rotate {
+  &-45 {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  &-90 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  &-135 {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  &-180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+#page-content-wrapper{
+  min-width: 100vh;
+  width: 100%;
+}
+
+#sidebar-wrapper {
+  width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(
+      0deg,
+      rgba(28, 103, 175, 0.9),
+      rgba(28, 103, 175, 0.9)
+    ),
+    url("../../../assets/img/trongdong3.jpg");
+  background-repeat: no-repeat;
+  background-position: 75% 225%;
+  .link-white {
+    font-size: 14px;
+  }
+}
+
+.menu-item {
+  background-color: rgba(20, 80, 140, 1);
+  color: white;
+}
+
+.list {
+  list-style: none;
+  &-list-item {
+    .link::hover {
+      color: white !important;
+    }
+  }
+}
+
+.link {
+  color: white;
+  &-white {
+    color: rgba($color: #b4b4b4, $alpha: 1) !important;
+    a::hover{
+      color: white;
+    }
+  }
+}
+
+.btn {
+  &-btn-tl {
+    text-align: left !important;
+  }
+  &__btn-tl {
+    text-align: left !important;
+  }
+  &__btn-tr {
+    text-align: right !important;
+  }
+  &::hover {
+    color: white !important;
+  }
+}
+
+.bg{
+  &__bg-blue{
+    background-color: rgba($color: #24527f, $alpha: 1.0);
+    color: rgba($color: #b4b4b4, $alpha: 1) !important;
+  }
+}

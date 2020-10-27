@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@wght@400;500;600;700&display=swap");
+* {
+  font-family: "Baloo Bhaina 2", cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.ps-absolute {
+  position: absolute !important;
+}
+
+.ps-static {
+  position: static !important;
+}
+
+.ps-relative {
+  position: relative !important;
+}
+
+.ps-fixed {
+  position: fixed !important;
+}
+
+.typo-grap {
+  font-weight: 300;
+}
+
+.typo-grap__sz-1 {
+  font-size: 32px !important;
+  text-align: justify;
+}
+
+.typo-grap__sz-2 {
+  font-size: 28px !important;
+  text-align: justify;
+  line-height: 56px;
+}
+
+.typo-grap__sz-3 {
+  font-size: 24px !important;
+  text-align: justify;
+}
+
+.typo-grap__sz-4 {
+  font-size: 22px !important;
+  text-align: justify;
+}
+
+.typo-grap__sz-5 {
+  font-size: 18px !important;
+  text-align: justify;
+  line-height: 36 px;
+}
+
+.typo-grap__sz-6 {
+  font-size: 16px !important;
+  text-align: justify;
+}
+
+.typo-grap__sz-7 {
+  font-size: 14px !important;
+  text-align: justify;
+}
+
+.typo-grap__sz-8 {
+  font-size: 12px !important;
+  text-align: justify;
+}
+
+.typo-title {
+  font-weight: 700;
+}
+
+.typo-title__title-1 {
+  font-size: 22px;
+}
+
+.typo-title__title-2 {
+  font-size: 18px;
+}
+
+.typo-title__title-3 {
+  font-weight: 600 !important;
+  font-size: 16px;
+}
+
+.typo-title__title-4 {
+  font-weight: 600 !important;
+  font-size: 14px;
+}
+
+.z-index-1 {
+  z-index: 1 !important;
+}
+
+.z-index-2 {
+  z-index: 2 !important;
+}
+
+.z-index-3 {
+  z-index: 3 !important;
+}
+
+.z-index-4 {
+  z-index: 4 !important;
+}
+
+.img-h18 {
+  height: 18px;
+}
+
+.img-h25 {
+  height: 25px;
+}
+
+.img-h40 {
+  height: 40px;
+}
+
+.img-h50 {
+  height: 50px;
+}
+
+.img-h80 {
+  height: 80px;
+}
+
+.img-h100 {
+  height: 100px;
+}
+
+.rotate-45 {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.rotate-90 {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.rotate-135 {
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.rotate-180 {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#sidebar-wrapper {
+  width: 250px;
+  min-height: 100vh;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(28, 103, 175, 0.9)), to(rgba(28, 103, 175, 0.9))), url("../../../../../../PHP/Reporter/assets/img/trongdong3.jpg");
+  background: linear-gradient(0deg, rgba(28, 103, 175, 0.9), rgba(28, 103, 175, 0.9)), url("../../../../../../PHP/Reporter/assets/img/trongdong3.jpg");
+  background-repeat: no-repeat;
+  background-position: 75% 225%;
+}
+
+.menu-item {
+  background-color: #14508c;
+  color: white;
+}
+/*# sourceMappingURL=css.css.map */
