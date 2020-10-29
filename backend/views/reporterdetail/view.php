@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'rep_code',
+            'rep_co_quan',
             'rep_name',
             'rep_avt',
             'rep_gender',

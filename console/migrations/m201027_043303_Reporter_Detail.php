@@ -20,6 +20,7 @@ class m201027_043303_Reporter_Detail extends Migration
         $this->createTable('{{%ReporterDetail}}', [
             'id' => $this->primaryKey(),
             'rep_code' => $this->string(8)->notNull(),
+            'rep_co_quan' => $this->string()->notNull(),
             'rep_name' => $this->string()->notNull(),
             'rep_avt' => $this->string()->notNull(),
             'rep_gender' => $this->boolean()->notNull(),

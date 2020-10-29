@@ -17,7 +17,7 @@ class ReporterdetailSearch extends Reporterdetail
     public function rules()
     {
         return [
-            [['id', 'rep_gender', 'rep_dob', 'rep_ngay_cap_cmnd', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'rep_co_quan', 'rep_gender', 'rep_dob', 'rep_ngay_cap_cmnd', 'created_at', 'updated_at'], 'integer'],
             [['rep_code', 'rep_name', 'rep_avt', 'rep_noi_o', 'rep_chuc_vu', 'rep_but_danh', 'rep_giao_duc', 'rep_chuyen_mon', 'rep_truong_hoc', 'rep_chuyen_nganh', 'rep_hinh_thuc', 'rep_tot_nghiep', 'rep_chinh_tri', 'rep_ngoai_ngu', 'rep_chung_chi', 'rep_dang_vien', 'rep_chuc_dah', 'rep_so_the_cu', 'rep_cmnd', 'rep_cmnd_front', 'rep_cmnd_back', 'rep_hdld', 'rep_scan_bang', 'rep_scan_hdld', 'rep_scan_hs_khac'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class ReporterdetailSearch extends Reporterdetail
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'rep_co_quan' => $this->rep_co_quan,
             'rep_gender' => $this->rep_gender,
             'rep_dob' => $this->rep_dob,
             'rep_ngay_cap_cmnd' => $this->rep_ngay_cap_cmnd,

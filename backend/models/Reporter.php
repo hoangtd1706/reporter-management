@@ -34,9 +34,9 @@ class Reporter extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['created_at', 'updated_at'], 'required'],
+            [['created_at', 'updated_at'], 'required','message'=>'{attribute} không được để trống!'],
             [['rep_code'], 'string', 'max' => 8],
-            [['rep_code'], 'unique'],
+            [['rep_code'], 'unique','message'=>'{attribute} đã tồn tại!'],
         ];
     }
 
@@ -47,10 +47,10 @@ class Reporter extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'rep_code' => 'Rep Code',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'rep_code' => 'Mã phóng viên',
+            'status' => 'Trạng thái',
+            'created_at' => 'Ngày tạo',
+            'updated_at' => 'Ngày cập nhật',
         ];
     }
 

@@ -52,13 +52,13 @@ class Reporterprofile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'profile_code' => 'Profile Code',
-            'rep_code' => 'Rep Code',
-            'so_the_nha_bao' => 'So The Nha Bao',
-            'cate_id' => 'Cate ID',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'profile_code' => 'Mã hồ sơ',
+            'rep_code' => 'Mã phóng viên',
+            'so_the_nha_bao' => 'Số thẻ nhà báo',
+            'cate_id' => 'Loại hồ sơ',
+            'status' => 'Trạng thái',
+            'created_at' => 'Ngày tạo',
+            'updated_at' => 'Ngày cập nhật',
         ];
     }
 

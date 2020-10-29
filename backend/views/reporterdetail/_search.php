@@ -19,11 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'rep_code') ?>
 
+    <?= $form->field($model, 'rep_co_quan') ?>
+
     <?= $form->field($model, 'rep_name') ?>
 
     <?= $form->field($model, 'rep_avt') ?>
 
-    <?= $form->field($model, 'rep_gender') ?>
+    <?php // echo $form->field($model, 'rep_gender') ?>
 
     <?php // echo $form->field($model, 'rep_dob') ?>
 

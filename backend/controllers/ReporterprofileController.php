@@ -66,6 +66,10 @@ class ReporterprofileController extends Controller
     {
         $model = new Reporterprofile();
 
+        $time = time();
+        $model->created_at = $time;
+        $model->updated_at = $time;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -86,6 +90,8 @@ class ReporterprofileController extends Controller
     {
         $model = $this->findModel($id);
 
+        $time = time();
+        $model->updated_at = $time;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

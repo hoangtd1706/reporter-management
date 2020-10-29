@@ -20,31 +20,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'cate_name',
-            'status',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return $model->status == 1 ? 'Hoạt động' : 'Không hoạt động';
+                }
+            ],
+            'created_at:date',
+            'updated_at:date',
 
             ['class' => 'yii\grid\ActionColumn',
                 'buttons' => [
-                    'update' =>  function($url,$model) {
+                    'update' => function ($url, $model) {
                         return Html::a('<i class="fas fa-edit"></i>', $url, [
                             'title' => Yii::t('app', 'update')
                         ]);
                     },
-                    'view' =>  function($url,$model) {
+                    'view' => function ($url, $model) {
                         return Html::a('<i class="fas fa-eye"></i>', $url, [
                             'title' => Yii::t('app', 'view')
                         ]);
                     },
-                    'delete' => function($url,$model) {
+                    'delete' => function ($url, $model) {
                         return Html::a('<i class="fas fa-trash"></i>', $url, [
                             'title' => Yii::t('app', 'delete')
                         ]);

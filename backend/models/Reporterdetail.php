@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $rep_code
+ * @property int|null $rep_co_quan
  * @property string $rep_name
  * @property string $rep_avt
  * @property int $rep_gender
@@ -57,10 +58,10 @@ class Reporterdetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['rep_code', 'rep_name', 'rep_avt', 'rep_gender', 'rep_dob', 'rep_noi_o', 'rep_cmnd', 'rep_ngay_cap_cmnd', 'rep_cmnd_front', 'rep_cmnd_back', 'created_at', 'updated_at'], 'required'],
-            [['rep_gender', 'rep_dob', 'rep_ngay_cap_cmnd', 'created_at', 'updated_at'], 'integer'],
+            [['rep_code', 'rep_name', 'rep_avt', 'rep_gender', 'rep_dob', 'rep_noi_o' , 'rep_dan_toc', 'rep_que_quan', 'rep_cmnd', 'rep_ngay_cap_cmnd', 'rep_cmnd_front', 'rep_cmnd_back', 'created_at', 'updated_at'], 'required'],
+            [['rep_co_quan', 'rep_gender', 'rep_dob', 'rep_ngay_cap_cmnd', 'created_at', 'updated_at'], 'integer'],
             [['rep_code'], 'string', 'max' => 8],
-            [['rep_name', 'rep_avt', 'rep_noi_o', 'rep_chuc_vu', 'rep_but_danh', 'rep_giao_duc', 'rep_chuyen_mon', 'rep_truong_hoc', 'rep_chuyen_nganh', 'rep_hinh_thuc', 'rep_tot_nghiep', 'rep_chinh_tri', 'rep_ngoai_ngu', 'rep_chung_chi', 'rep_dang_vien', 'rep_chuc_dah', 'rep_so_the_cu', 'rep_cmnd', 'rep_cmnd_front', 'rep_cmnd_back', 'rep_hdld', 'rep_scan_bang', 'rep_scan_hdld', 'rep_scan_hs_khac'], 'string', 'max' => 255],
+            [['rep_name', 'rep_avt', 'rep_noi_o', 'rep_dan_toc', 'rep_que_quan', 'rep_chuc_vu', 'rep_but_danh', 'rep_giao_duc', 'rep_chuyen_mon', 'rep_truong_hoc', 'rep_chuyen_nganh', 'rep_hinh_thuc', 'rep_tot_nghiep', 'rep_chinh_tri', 'rep_ngoai_ngu', 'rep_chung_chi', 'rep_dang_vien', 'rep_chuc_dah', 'rep_so_the_cu', 'rep_cmnd', 'rep_cmnd_front', 'rep_cmnd_back', 'rep_hdld', 'rep_scan_bang', 'rep_scan_hdld', 'rep_scan_hs_khac'], 'string', 'max' => 255],
             [['rep_code'], 'exist', 'skipOnError' => true, 'targetClass' => Reporter::className(), 'targetAttribute' => ['rep_code' => 'rep_code']],
         ];
     }
@@ -72,36 +73,39 @@ class Reporterdetail extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'rep_code' => 'Rep Code',
-            'rep_name' => 'Rep Name',
-            'rep_avt' => 'Rep Avt',
-            'rep_gender' => 'Rep Gender',
-            'rep_dob' => 'Rep Dob',
-            'rep_noi_o' => 'Rep Noi O',
-            'rep_chuc_vu' => 'Rep Chuc Vu',
-            'rep_but_danh' => 'Rep But Danh',
-            'rep_giao_duc' => 'Rep Giao Duc',
-            'rep_chuyen_mon' => 'Rep Chuyen Mon',
-            'rep_truong_hoc' => 'Rep Truong Hoc',
-            'rep_chuyen_nganh' => 'Rep Chuyen Nganh',
-            'rep_hinh_thuc' => 'Rep Hinh Thuc',
-            'rep_tot_nghiep' => 'Rep Tot Nghiep',
-            'rep_chinh_tri' => 'Rep Chinh Tri',
-            'rep_ngoai_ngu' => 'Rep Ngoai Ngu',
-            'rep_chung_chi' => 'Rep Chung Chi',
-            'rep_dang_vien' => 'Rep Dang Vien',
-            'rep_chuc_dah' => 'Rep Chuc Dah',
-            'rep_so_the_cu' => 'Rep So The Cu',
-            'rep_cmnd' => 'Rep Cmnd',
-            'rep_ngay_cap_cmnd' => 'Rep Ngay Cap Cmnd',
-            'rep_cmnd_front' => 'Rep Cmnd Front',
-            'rep_cmnd_back' => 'Rep Cmnd Back',
-            'rep_hdld' => 'Rep Hdld',
-            'rep_scan_bang' => 'Rep Scan Bang',
-            'rep_scan_hdld' => 'Rep Scan Hdld',
-            'rep_scan_hs_khac' => 'Rep Scan Hs Khac',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'rep_code' => 'Mã phóng viên',
+            'rep_co_quan' => 'Tên cơ quan',
+            'rep_name' => 'Họv và tên',
+            'rep_avt' => 'Ảnh phóng viên',
+            'rep_gender' => 'Giới tính',
+            'rep_dob' => 'Ngày sinh',
+            'rep_dan_toc' => 'Dân tộc',
+            'rep_que_quan' => 'Quê quán',
+            'rep_noi_o' => 'Nơi ở',
+            'rep_chuc_vu' => 'Chức vụ',
+            'rep_but_danh' => 'Bút danh',
+            'rep_giao_duc' => 'Giáo dục',
+            'rep_chuyen_mon' => 'Chuyên môn',
+            'rep_truong_hoc' => 'Trường học',
+            'rep_chuyen_nganh' => 'Chuyên ngành',
+            'rep_hinh_thuc' => 'Hình thức',
+            'rep_tot_nghiep' => 'Năm tốt nghiệp',
+            'rep_chinh_tri' => 'Chính trị',
+            'rep_ngoai_ngu' => 'Ngoại ngữ',
+            'rep_chung_chi' => 'Chứng chỉ',
+            'rep_dang_vien' => 'Đảng viên',
+            'rep_chuc_dah' => 'Chức danh',
+            'rep_so_the_cu' => 'Số thẻ cũ',
+            'rep_cmnd' => 'Số CMND',
+            'rep_ngay_cap_cmnd' => 'Ngày cấp CMND',
+            'rep_cmnd_front' => 'Mặt trước CMND',
+            'rep_cmnd_back' => 'Mặt sau CMND',
+            'rep_hdld' => 'Ngày ký HDLD',
+            'rep_scan_bang' => 'Scan bằng',
+            'rep_scan_hdld' => 'Scan HDLD',
+            'rep_scan_hs_khac' => 'Scan hồ sơ khác',
+            'created_at' => 'Ngày tạo',
+            'updated_at' => 'Ngày cập nhật',
         ];
     }
 

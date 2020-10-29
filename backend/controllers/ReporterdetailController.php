@@ -65,6 +65,9 @@ class ReporterdetailController extends Controller
     public function actionCreate()
     {
         $model = new Reporterdetail();
+        $time = time();
+        $model->created_at = $time;
+        $model->updated_at = $time;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -85,6 +88,8 @@ class ReporterdetailController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $time = time();
+        $model->updated_at = $time;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

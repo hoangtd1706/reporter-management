@@ -40,14 +40,23 @@ $url = Yii::getAlias("@web") . '/img/';
 
             </div>
             <div class="sb-sidenav-footer p-0">
-                <a href="logout" class="btn btn-primary btn-block text-align-left m-0">Đăng xuất</a>
+
+                <?php if(!Yii::$app->user->isGuest): ?>
+                <?= Html::a(
+                    'Đăng xuất',
+                    ['/site/logout'],
+                    ['data-method' => 'post', 'class' => 'btn btn-primary btn-block text-align-left m-0']
+                ) ?>
+                <?php else: ?>
+                    <?= Html::a('Login', ['/site/login'], ['class' => 'btn btn-primary btn-block text-align-left m-0']) ?>
+                <?php endif; ?>
             </div>
         </nav>
     </div>
     <div id="layoutSidenav_content">
         <main>
 
-            <div class="container-fluid">
+            <div class="container-fluid  bg__form">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
@@ -57,13 +66,6 @@ $url = Yii::getAlias("@web") . '/img/';
 
             </div>
         </main>
-        <footer class="py-2 bg-light mt-auto">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
 
