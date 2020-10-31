@@ -3,16 +3,28 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
+use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Reporterdetail */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
+/* @var $modelsProcess backend\models\Reporterdetail */
+
 $org = \backend\models\Organization::find()->where(['status' => 1])->all();
+
+$cate = \backend\models\Category::findOne(2);
 ?>
 
 <div class="reporterdetail-form">
-    <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'rep_code')->textInput(['maxlength' => true]) ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?= $form->field($model, 'rep_avt')->fileInput()->hiddenInput() ?>
+    <div class="d-flex row mb-4 pl-4">
+        <label class="col-form-label mr-4">Chọn loại hồ sơ</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" readonly="" maxlength="255" value="<?php echo $cate->cate_name ?>">
+        </div>
+    </div>
+
     <div class="row pl-2">
         <div class="pl-3">
             <button class="btn-button btn-button__1">MẪU SỐ 01</button>
@@ -23,13 +35,12 @@ $org = \backend\models\Organization::find()->where(['status' => 1])->all();
         <div class="form-reporter">
             <!-- Phần đầu: Ảnh 3x4, Quốc hiệu tiêu ngữ, Tiêu đề bản khai,... -->
             <section id="form-header">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-3">
-                        <?= $form->field($model, 'rep_avt')->textInput(['maxlength' => true])->label(false) ?>
-                        <img class="" style="width: 200px; height: 250px;"
+                <div class="row d-flex justify-content-between  mt-4">
+                    <div class="col-2">
+                        <img id="avatar" class="" style="width: 200px; height: 250px;"
                              src="/reporter-management/backend/web/img/trongdong3.jpg" alt="">
                     </div>
-                    <div class="col-6 row justify-content-center">
+                    <div class="col-8 row justify-content-center">
                         <div class="col-12 text-align-center">
                             <p class="fs_s-18 fw_w-5 fc__c-gray m-0">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
                             <i class="fs_s-16 fst__i fc__c-gray">Độc lập - Tự do - Hạnh phúc</i>
@@ -47,8 +58,8 @@ $org = \backend\models\Organization::find()->where(['status' => 1])->all();
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <img style="width: 200px; height: 250px;" src="trongdong3.jpg" alt="">
+                    <div class="col-2">
+                        <div style="width: 200px; height: 250px;float: right;" class="bg__gray"></div>
                     </div>
                 </div>
             </section>
@@ -80,13 +91,13 @@ $org = \backend\models\Organization::find()->where(['status' => 1])->all();
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Dân tộc:</label>
                         <div class="col-sm-10">
-                            <?= $form->field($model, 'rep_dan_toc')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'rep_dan_toc')->textInput(['maxlength' => true])->label(false) ?>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Quê quán:</label>
                         <div class="col-sm-10">
-                            <?= $form->field($model, 'rep_que_quan')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'rep_que_quan')->textInput(['maxlength' => true])->label(false) ?>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -106,8 +117,8 @@ $org = \backend\models\Organization::find()->where(['status' => 1])->all();
                         <label class="col-sm-2 col-form-label">Chức vụ(3):</label>
                         <div class="col-sm-10">
                             <?= $form->field($model, 'rep_chuc_vu')->dropDownList([
-                                'Truong phong',
-                                'Pho phong',
+                                'Trưởng phòng',
+                                'Phó phòng',
                             ], [
                                 'prompt' => '-Nhóm chức vụ-',
                             ])->label(false) ?>
@@ -204,75 +215,86 @@ $org = \backend\models\Organization::find()->where(['status' => 1])->all();
                 <!-- Quá trình hoạt động báo chí 5 năm gần nhất -->
                 <p class="fs_s-18 fw_w-5 fc__c-blue lh-h36 bd-left">QUÁ TRÌNH HOẠT ĐỘNG BÁO CHÍ 5 NĂM GẦN NHẤT
                 </p>
-                <div id="info" class="bg__form mb-4 p-4">
-                    <table id="table-info" class="table table-bordered text-align-center">
-                        <thead style="align-content: center;" class="thead-dark">
-                        <tr>
 
-                            <th rowspan="2" colspan="2">Thời gian (từ tháng, năm nào đến tháng, năm nào)
-                            </th>
+                <div id="panel-option-values" class="panel panel-default bg__form mb-4 p-4">
+                    <?php DynamicFormWidget::begin([
+                        'widgetContainer' => 'dynamicform_wrapper',
+                        'widgetBody' => '.form-options-body',
+                        'widgetItem' => '.form-options-item',
+                        'limit' => 8,
+                        'min' => 1,
+                        'insertButton' => '.add-item',
+                        'deleteButton' => '.delete-item',
+                        'model' => $modelsProcess[0],
+                        'formId' => 'dynamic-form',
+                        'formFields' => [
+                            'start_date',
+                            'end_date',
+                            'chuc_vu',
+                            'co_quan',
+                            'ngach_luong',
+                            'bac_luong',
+                            'note',
+                        ],
+                    ]); ?>
+
+                    <table class="table-cus">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th rowspan="2" colspan="2">Thời gian (từ tháng, năm nào đến tháng, năm nào)</th>
                             <th rowspan="2">Chức danh báo chí</th>
                             <th rowspan="2">Công tác tại cơ quan báo chí nào</th>
                             <th rowspan="1" colspan="2">Lương</th>
-                            <th rowspan="2">Khen thưởng kỷ luật (thời gian cụ thể)</th>
+                            <th rowspan="2">Khen thưởng, kỷ luật (thời gian cụ thể)</th>
                         </tr>
                         <tr>
-                            <th>Ngạch lương</th>
-                            <th>Bậc lương</th>
+                            <th rowspan="1" colspan="1">Ngạch lương</th>
+                            <th rowspan="1" colspan="1">Bậc lương</th>
                         </tr>
                         </thead>
-                        <tbody id="table-info_body">
-                        <tr id="rec-1">
-                            <td colspan="1" class="p-0 sn">
-                                <div class="form-group row">
-                                    <label class="col-4">Từ</label>
-                                    <input class="form-control col-6" type="text" name="start">
-                                </div>
-                            </td>
-                            <td colspan="1" class="p-0">
-                                <div class="form-group row">
-                                    <label class="col-4">Đến</label>
-                                    <input class="form-control col-6" type="text" name="end">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <input class="form-control" type="text">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <input class="form-control" type="text">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <input class="form-control" type="text">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <input class="form-control" type="text">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <input class="form-control" type="text">
-                                </div>
-                            </td>
-                            <td class="p-0">
-                                <div class="form-group">
-                                    <a class="btn remove-row">Xóa hàng</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <a class="add-row btn bg__btn-gray"><i class="fas fa-plus"></i></a>
-                                </div>
-                            </td>
-                        </tr>
+                        <tbody class="form-options-body">
+                        <?php foreach ($modelsProcess as $index => $modelProcess): ?>
+                            <tr class="form-options-item">
+                                <td colspan="2">
+                                    <div class="d-flex">
+                                        <div class="d-flex">
+                                            <label>Từ</label>
+                                            <?= $form->field($modelProcess, "[{$index}]start_date")->label(false)->textInput(['maxlength' => true]) ?>
+                                        </div>
+                                        <div class="d-flex">
+                                            <label>Đến</label>
+                                            <?= $form->field($modelProcess, "[{$index}]end_date")->label(false)->textInput(['maxlength' => true]) ?>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <?= $form->field($modelProcess, "[{$index}]chuc_vu")->label(false)->textInput(['maxlength' => true]) ?>
+                                </td>
+                                <td>
+                                    <?= $form->field($modelProcess, "[{$index}]co_quan")->label(false)->textInput(['maxlength' => true]) ?>
+                                </td>
+                                <td>
+                                    <?= $form->field($modelProcess, "[{$index}]ngach_luong")->label(false)->textInput(['maxlength' => true]) ?>
+                                </td>
+                                <td>
+                                    <?= $form->field($modelProcess, "[{$index}]bac_luong")->label(false)->textInput(['maxlength' => true]) ?>
+                                </td>
+                                <td>
+                                    <?= $form->field($modelProcess, "[{$index}]note")->label(false)->textInput(['maxlength' => true]) ?>
+                                </td>
+
+                                <td class="vcenter m-0 p-0">
+                                    <button type="button" class="delete-item btn fs_s-12">Xóa hàng</button>
+                                </td>
+                                <td class="vcenter m-0 p-0">
+                                    <button type="button" class="add-item btn bg__btn-gray"><i class="fas fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?php DynamicFormWidget::end(); ?>
                 </div>
 
                 <!-- Thông tin khai cho mẫu số 3 -->

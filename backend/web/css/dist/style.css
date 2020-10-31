@@ -10,8 +10,10 @@
   border-radius: 20px;
 }
 
-
 #sidenavAccordion {
+  background: linear-gradient(0deg, rgba(28, 103, 175, 0.9), rgba(28, 103, 175, 0.9)), url("../../../assets/img/trongdong3.jpg");
+  background-repeat: no-repeat;
+  background-position: 75% 225%;
 }
 #sidenavAccordion .nav-link {
   color: white;
@@ -164,9 +166,6 @@
 .text-align-right {
   text-align: right !important;
 }
-.text-align-bottom {
-  text-align: bottom !important;
-}
 
 .ps-absolute {
   position: absolute !important;
@@ -283,4 +282,34 @@
 .rotate-180 {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.table-cus {
+  border-collapse: collapse;
+}
+.table-cus table,
+.table-cus tr,
+.table-cus th,
+.table-cus td {
+  border: 1px solid #dee2e6;
+}
+.table-cus .thead-dark {
+  color: white;
+  background-color: #343a40;
+  border-color: #454d55;
+}
+.table-cus .thead-dark tr {
+  text-align: center;
+  margin: 20px;
+}
+.table-cus .thead-dark tr th {
+  font-weight: 500;
+  padding: 10px;
+}
+.table-cus tbody tr {
+  text-align: center;
+}
+.table-cus tbody tr td label {
+  margin: 0;
+  align-self: center;
 }

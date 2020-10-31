@@ -20,7 +20,6 @@ $bg-blue1: #1c67af;
 }
 
 #sidenavAccordion {
- 
   background: linear-gradient(
       0deg,
       rgba(28, 103, 175, 0.9),
@@ -31,7 +30,7 @@ $bg-blue1: #1c67af;
   background-position: 75% 225%;
   .nav-link {
     color: white;
-    &::hover {
+    &:hover {
       background-color: $color-main;
     }
   }
@@ -159,7 +158,7 @@ $bg-blue1: #1c67af;
     background-color: $bg-gray;
   }
   &__menu {
-    background-color: $bg-menu!important;
+    background-color: $bg-menu !important;
   }
   &__form {
     background-color: $bg-form;
@@ -206,9 +205,6 @@ $bg-blue1: #1c67af;
     &-right {
       text-align: right !important;
     }
-    &-bottom {
-      text-align: bottom !important;
-    }
   }
 }
 
@@ -250,7 +246,7 @@ $bg-blue1: #1c67af;
     &__sz-5 {
       font-size: 18px !important;
       text-align: justify;
-      line-height: 36 px;
+      line-height: 36px;
     }
     &__sz-6 {
       font-size: 16px !important;
@@ -338,3 +334,38 @@ $bg-blue1: #1c67af;
     transform: rotate(180deg);
   }
 }
+
+.table-cus {
+  table,
+  tr,
+  th,
+  td {
+    border: 1px solid #dee2e6;
+  }
+  .thead-dark {
+    color: white;
+    background-color: #343a40;
+    border-color: #454d55;
+    tr {
+      text-align: center;
+      margin: 20px;
+      th {
+        font-weight: 500; 
+        padding: 10px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      text-align: center;
+      td{
+        label{
+          margin: 0;
+          align-self: center;
+          }
+        }
+    }
+  }
+  border-collapse: collapse;
+}
+

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Reporterprocess;
 use Yii;
 use backend\models\Reporterdetail;
 use backend\models\ReporterdetailSearch;
@@ -65,6 +66,7 @@ class ReporterdetailController extends Controller
     public function actionCreate()
     {
         $model = new Reporterdetail();
+        $modelsProcess = [new Reporterprocess];
         $time = time();
         $model->created_at = $time;
         $model->updated_at = $time;
@@ -75,6 +77,7 @@ class ReporterdetailController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelsProcess' => (empty($modelsProcess)) ? [new Reporterprocess] : $modelsProcess,
         ]);
     }
 
