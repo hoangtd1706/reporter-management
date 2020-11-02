@@ -302,24 +302,24 @@ $cate = \backend\models\Category::findOne(2);
                 <div id="info" class="bg__form mb-4 p-4">
                     <div class="form-group d-flex row">
                         <label class="col-sm-2 col-form-label">Số CMND/CCCD/Hộ chiếu</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                             <?= $form->field($model, 'rep_cmnd')->textInput(['maxlength' => true])->label(false) ?>
                         </div>
                         <label class="col-sm-1 col-form-label">Ngày cấp</label>
                         <div class="col-sm-2">
                             <?= $form->field($model, 'rep_ngay_cap_cmnd')->textInput()->label(false) ?>
                         </div>
-                        <label class="col-sm-1 col-form-label">Ảnh CMND/CCCD</label>
+                        <label class="col-sm-2 col-form-label">Ảnh CMND/CCCD</label>
                         <div class="col-sm-2 row">
-                            <?= $form->field($model, 'rep_cmnd_front')->textInput(['maxlength' => true])->label(false) ?>
-                            <button class="btn btn-xl bg__btn-gray btn-btn-gray1 mr-1"><i
+                            <?= $form->field($model, 'rep_cmnd_front')->fileInput()->hiddenInput()->label(false) ?>
+                            <span class="btn btn-xl bg__btn-gray btn-btn-gray1 mr-1" id="cmnd_front"><i
                                         class="fas fa-camera"></i>
                                 <p class="fs_s-12">Ảnh mặt trước</p>
-                            </button>
-                            <?= $form->field($model, 'rep_cmnd_back')->textInput(['maxlength' => true])->label(false) ?>
-                            <button class="btn btn-xl bg__btn-gray btn-btn-gray1"><i class="fas fa-camera"></i>
+                            </span>
+                            <?= $form->field($model, 'rep_cmnd_back')->fileInput()->hiddenInput()->label(false) ?>
+                            <span class="btn btn-xl bg__btn-gray btn-btn-gray1" id="cmnd_back"><i class="fas fa-camera"></i>
                                 <p class="fs_s-12">Ảnh mặt sau</p>
-                            </button>
+                            </span>
                         </div>
                     </div>
                     <div class="form-group row">

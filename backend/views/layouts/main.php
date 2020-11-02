@@ -6,13 +6,11 @@
 
 use backend\assets\AppAsset;
 use yii\bootstrap4\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\bootstrap4\Breadcrumbs;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 $url = Yii::getAlias("@web") . '/img/';
+$baseUrl = str_replace('/backend/web','',Yii::$app->urlManager->getBaseUrl());
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -70,18 +68,19 @@ $url = Yii::getAlias("@web") . '/img/';
     </div>
 </div>
 
+<!--Modal ảnh 3x4-->
 <div class="modal fade" id="modelAvatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Chọn ảnh</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <iframe  width="765" height="550" frameborder="0"
-                         src="http://localhost:1999/reporter-management/filemanager/dialog.php?type=0">
+                <iframe  width="100%" height="550" frameborder="0"
+                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_avt">
                 </iframe>
             </div>
             <div class="modal-footer">
@@ -92,6 +91,51 @@ $url = Yii::getAlias("@web") . '/img/';
     </div>
 </div>
 
+<!--Modal ảnh mặt trước CMND-->
+<div class="modal fade" id="modelCIDFront" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Upload CMND mặt trước</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe  width="100%" height="550" frameborder="0"
+                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_cmnd_front">
+                </iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal ảnh mặt sau CMND-->
+<div class="modal fade" id="modelCIDBack" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Upload CMND mặt sau</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe  width="100%" height="550" frameborder="0"
+                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_cmnd_back">
+                </iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php $this->endBody() ?>
 </body>
