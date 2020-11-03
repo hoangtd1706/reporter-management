@@ -74,7 +74,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/reporter-management/upload/files/',
+	'upload_dir' => '/../reporter-management/upload/files/',
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
@@ -83,7 +83,7 @@ $config = array(
 	| with final /
 	|
 	*/
-	'current_path' => '../upload/files/',
+	'current_path' => '../../upload/files/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ $config = array(
 	| DO NOT put inside upload folder
 	|
 	*/
-	'thumbs_base_path' => '../upload/thumbs/',
+	'thumbs_base_path' => 'upload/thumbs/',
 
 
 	/*

@@ -17,7 +17,7 @@ $cate = \backend\models\Category::findOne(2);
 
 <div class="reporterdetail-form">
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
-    <?= $form->field($model, 'rep_avt')->fileInput()->hiddenInput() ?>
+    <?= $form->field($model, 'rep_avt')->fileInput()->hiddenInput()->label(false) ?>
     <div class="d-flex row mb-4 pl-4">
         <label class="col-form-label mr-4">Chọn loại hồ sơ</label>
         <div class="col-sm-4">
