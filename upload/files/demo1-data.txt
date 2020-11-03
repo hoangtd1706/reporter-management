@@ -1,0 +1,174 @@
+CREATE DATABASE demo1;
+
+---- Create User table
+
+create table user
+(
+    id                   int auto_increment
+        primary key,
+    username             varchar(255)        not null,
+    auth_key             varchar(32)         not null,
+    password_hash        varchar(255)        not null,
+    password_reset_token varchar(255)        null,
+    email                varchar(255)        not null,
+    status               smallint default 10 not null,
+    created_at           int                 not null,
+    updated_at           int                 not null,
+    verification_token   varchar(255)        null,
+    constraint email
+        unique (email),
+    constraint password_reset_token
+        unique (password_reset_token),
+    constraint username
+        unique (username)
+)
+
+---- Create Department table
+
+create table department
+(
+    id             int auto_increment
+        primary key,
+    dep_name       varchar(255)        not null,
+    dep_desciption varchar(255)        not null,
+    status         smallint default 10 not null,
+    created_at     int                 not null,
+    updated_at     int                 not null,
+    constraint dep_name
+        unique (dep_name)
+);
+
+---- Create Staff table
+
+create table staff
+(
+    id          int auto_increment
+        primary key,
+    staff_name  varchar(255)        not null,
+    staff_email varchar(255)        not null,
+    staff_tel   varchar(255)        not null,
+    dep_name    varchar(255)        not null,
+    status      smallint default 10 not null,
+    created_at  int                 not null,
+    updated_at  int                 not null,
+    constraint staff_email
+        unique (staff_email),
+    constraint fk_staff_department
+        foreign key (dep_name) references department (dep_name)
+);
+    collate = utf8_unicode_ci;
+
+INSERT INTO demo1.user (id, username, auth_key, password_hash, password_reset_token, email, status, created_at, updated_at, verification_token) VALUES (1, 'hoang', 's_ERWU06fugjl2HXypDOmuX4ayg6wCTc', '$2y$13$CpLEOgrC9NILW9GFGiAbHu58yIk4j1Gy.AcvXDZxjFjcKPgTOdTs2', null, 'hoangtd1706@gmail.com', 10, 1601438979, 1601438979, 'Nz_g8a08ZpueDoGUucvkUg8P9W-EDoA-_1601438979');
+INSERT INTO demo1.user (id, username, auth_key, password_hash, password_reset_token, email, status, created_at, updated_at, verification_token) VALUES (2, 'admin', 'hd_T16Cn6yH7EnFvhV2xcgf5SO4qLGcN', '$2y$13$pB/tAw2jNYx2tBUzMWml9OPXO65v7DgXwcZ21WPVR1PbNUz7Wt78u', null, 'hoang@gmail.com', 10, 1601439123, 1601439123, 'tcDedZk3Et3aaHWLuCFYe_1KnsgpA1ex_1601439123');
+
+-------Insert data to Department table
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (1, 'Nhân sự 0', 'Phòng nhân sự công ty', 1, 1601535364, 1601625367);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (2, 'Phòng kế toán', 'Phòng kế toán công ty', 1, 1601535399, 1601535399);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (3, 'Nhân sự 1', 'Phòng nhân sự công ty', 1, 1601536562, 1601536562);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (4, 'Nhân sự 2', 'Phòng nhân sự công ty', 1, 1601536575, 1601536575);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (5, 'Nhân sự 3', 'Phòng nhân sự công ty', 1, 1601536588, 1601536588);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (6, 'Nhân sự 4', 'Phòng nhân sự công ty', 1, 1601536598, 1601536598);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (7, 'Phòng kế toán 1', 'Phòng kế toán công ty', 1, 1601536610, 1601536610);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (8, 'Phòng kế toán 2', 'Phòng kế toán công ty', 1, 1601536623, 1601536623);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (9, 'Phòng kế toán 4', 'Phòng kế toán công ty', 1, 1601536637, 1601536637);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (10, 'Phòng kế toán 5', 'Phòng kế toán công ty', 1, 1601536652, 1601536652);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (11, 'Phòng kế toán 6', 'Phòng kế toán công ty', 1, 1601536663, 1601536663);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (12, 'Phòng kế toán 7', 'Phòng kế toán công ty', 1, 1601536682, 1601536682);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (13, 'Phòng kế toán 8', 'Phòng kế toán công ty', 1, 1601536693, 1601536693);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (14, 'Phòng kế toán 9', 'Phòng kế toán công ty', 1, 1601536703, 1601536703);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (15, 'Phòng kế toán 10', 'Phòng kế toán công ty', 0, 1601536714, 1601536714);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (16, 'Phòng kế toán 11', 'Phòng kế toán công ty', 0, 1601536752, 1601536752);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (17, 'Phòng kế toán 12', 'Phòng kế toán công ty', 0, 1601536770, 1601536770);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (18, 'Nhân sự 5', 'Phòng nhân sự công ty', 0, 1601536786, 1601536786);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (19, 'Nhân sự 6', 'Phòng nhân sự công ty', 0, 1601536798, 1601536798);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (20, 'Nhân sự 7', 'Phòng nhân sự công ty', 0, 1601536808, 1601536808);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (21, 'Nhân sự 8', 'Phòng nhân sự công ty', 0, 1601536818, 1601536818);
+INSERT INTO demo1.department (id, dep_name, dep_desciption, status, created_at, updated_at) VALUES (22, 'Nhân sự 9', 'Phòng nhân sự công ty', 0, 1601536832, 1601536832);
+
+------------Insert data to Staff table
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi1@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi2@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi3@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi4@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi5@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi6@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi7@exam.com', '0987654321', 63, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi8@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi9@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi10@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi11exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi12@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi13@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi14@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi15@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi16@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi17@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi18@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi19@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi20@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi21@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi22@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi23@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi24@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi25@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi26@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi27@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi28@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi29@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi30@exam.com', '0987654321', 58, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi31@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi32@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi33@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi34@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi35@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi36@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi37@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi38@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi39@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi40@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi41@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi42@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi43@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi44@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi45@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi46@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi47@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi48@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi49@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hihi50@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho1@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho2@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho3@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho4@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho5@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho6@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho7@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho8@exam.com', '0987654321', 59, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho9@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho10@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho11exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho12@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho13@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho14@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho15@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho16@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho17@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho18@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho19@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho20@exam.com', '0987654321', 60, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho21@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho22@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho23@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho24@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho25@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho26@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho27@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho28@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho29@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho30@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho31@exam.com', '0987654321', 61, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho32@exam.com', '0987654321', 62, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho33@exam.com', '0987654321', 62, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho34@exam.com', '0987654321', 62, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho35@exam.com', '0987654321', 62, 1, 1601543311, 1601543311);
+INSERT INTO demo1.staff (staff_name, staff_email, staff_tel, dep_id, status, created_at, updated_at) VALUES ('hihi', 'hoho36@exam.com', '0987654321', 62, 1, 1601543311, 1601543311);
