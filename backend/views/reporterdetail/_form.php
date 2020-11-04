@@ -27,18 +27,22 @@ $cate = \backend\models\Category::findOne(2);
 
     <div class="row pl-2">
         <div class="pl-3">
-            <button class="btn-button btn-button__1">MẪU SỐ 01</button>
-            <button class="btn-button btn-button__2">MẪU SỐ 02</button>
+            <span class="btn-button btn-button__1 fw_w-5">MẪU SỐ 01</span>
+            <span class="btn-button btn-button__2 fw_w-5">MẪU SỐ 02</span>
         </div>
     </div>
-    <div class="container-fluid pr-2 pl-2">
+    <div class="container-fluid pr-2 pl-2 mt-2">
         <div class="form-reporter">
             <!-- Phần đầu: Ảnh 3x4, Quốc hiệu tiêu ngữ, Tiêu đề bản khai,... -->
             <section id="form-header">
                 <div class="row d-flex justify-content-between  mt-4">
-                    <div class="col-2">
-                        <img id="avatar" class="" style="width: 200px; height: 250px;"
-                             src="/reporter-management/backend/web/img/trongdong3.jpg" alt="">
+                    <div class="col-2 text-align-center">
+                        <div class=" bg__gray" style="width: 250px;height: 312px">
+                        <img id="avatar" class="cursor"
+                             src="/reporter-management/backend/web/img/Add-Male-User-icon.png" alt="">
+                            <span class="fs_s-14">Ảnh 3x4</span>
+                            <p class="fs_s-14">(Nền xanh)</p>
+                        </div>
                     </div>
                     <div class="col-8 row justify-content-center">
                         <div class="col-12 text-align-center">
@@ -59,7 +63,7 @@ $cate = \backend\models\Category::findOne(2);
                         </div>
                     </div>
                     <div class="col-2">
-                        <div style="width: 200px; height: 250px;float: right;" class="bg__gray"></div>
+                        <div style="width: 250px;height: 312px;float: right;" class="bg__gray"></div>
                     </div>
                 </div>
             </section>
@@ -72,7 +76,7 @@ $cate = \backend\models\Category::findOne(2);
                     <div class="form-group d-flex row">
                         <label class="col-sm-2 col-form-label">Họ và tên khai sinh(2):</label>
                         <div class="col-sm-7">
-                            <?= $form->field($model, 'rep_name')->textInput(['maxlength' => true])->label(false) ?>
+                            <?= $form->field($model, 'rep_name')->textInput(['maxlength' => true,'style'=>'text-transform:uppercase'])->label(false) ?>
                         </div>
                         <label class="col-sm-1 col-form-label">Nam/Nữ</label>
                         <div class="col-sm-2">
@@ -301,31 +305,31 @@ $cate = \backend\models\Category::findOne(2);
                 <p class="fs_s-18 fw_w-5 fc__c-blue lh-h36 bd-left">THÔNG TIN KHAI CHO MẪU SỐ 3</p>
                 <div id="info" class="bg__form mb-4 p-4">
                     <div class="form-group d-flex row">
-                        <label class="col-sm-2 col-form-label">Số CMND/CCCD/Hộ chiếu</label>
-                        <div class="col-sm-2">
+                        <label class="col-sm-2 col-form-label align-self-center">Số CMND/CCCD/Hộ chiếu</label>
+                        <div class="col-sm-2 align-self-center">
                             <?= $form->field($model, 'rep_cmnd')->textInput(['maxlength' => true])->label(false) ?>
                         </div>
-                        <label class="col-sm-1 col-form-label">Ngày cấp</label>
-                        <div class="col-sm-2">
+                        <label class="col-sm-1 col-form-label align-self-center">Ngày cấp</label>
+                        <div class="col-sm-2 align-self-center">
                             <?= $form->field($model, 'rep_ngay_cap_cmnd')->textInput()->label(false) ?>
                         </div>
-                        <label class="col-sm-2 col-form-label">Ảnh CMND/CCCD</label>
-                        <div class="col-sm-2 row">
+                        <label class="col-sm-2 col-form-label text-align-right align-self-center">Ảnh CMND/CCCD</label>
+                        <div class="col-sm-3 row">
                             <?= $form->field($model, 'rep_cmnd_front')->fileInput()->hiddenInput()->label(false) ?>
-                            <span class="btn btn-xl bg__btn-gray btn-btn-gray1 mr-1" id="cmnd_front"><i
+                            <span class="cursor btn-xl bg__btn-gray btn-btn-gray1 mr-2" id="cmnd_front"><i
                                         class="fas fa-camera"></i>
                                 <p class="fs_s-12">Ảnh mặt trước</p>
                             </span>
                             <?= $form->field($model, 'rep_cmnd_back')->fileInput()->hiddenInput()->label(false) ?>
-                            <span class="btn btn-xl bg__btn-gray btn-btn-gray1" id="cmnd_back"><i class="fas fa-camera"></i>
+                            <span class="cursor btn-xl bg__btn-gray btn-btn-gray1" id="cmnd_back"><i class="fas fa-camera"></i>
                                 <p class="fs_s-12">Ảnh mặt sau</p>
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">
+                        <label class="col-sm-2 col-form-label">
                             Ngày, tháng, năm ký HĐLĐ có đóng BHXH</label>
-                        <div class="col-sm-9 form-group">
+                        <div class="col-sm-10 form-group">
                             <?= $form->field($model, 'rep_hdld')->textInput(['maxlength' => true])->label(false) ?>
                         </div>
                     </div>
@@ -336,32 +340,35 @@ $cate = \backend\models\Category::findOne(2);
                 <div id="info" class="bg__form mb-4 p-4">
 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">
+                        <label class="col-sm-2 col-form-label">
                             Scan bản chính hoặc bản sao bằng đại học, cao đẳng</label>
                         <div class="col-sm-9 align-self-center">
-                            <button class="btn btn-xl bg__btn-gray btn-btn-gray"><i
-                                        class="fas fa-plus fa-lg"></i></button>
-                            <?= $form->field($model, 'rep_scan_bang')->textInput(['maxlength' => true])->label(false) ?>
+                            <span class="cursor btn-xl bg__btn-gray btn-btn-gray" id="certificate"><i
+                                        class="fas fa-plus fa-lg"></i></span>
+                            <img src="" id="certifi" height="60px" alt="">
+                            <?= $form->field($model, 'rep_scan_bang')->fileinput()->hiddenInput()->label(false) ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">
+                        <label class="col-sm-2 col-form-label">
                             San bản chính hoặc bản sao quyết định tuyển dụng, HĐLĐ có xác nhận của cơ quan báo
                             chí
                             hoặc tài liệu chứng minh thời gian công tác</label>
-                        <div class="col-sm-9 align-self-center">
-                            <button class="btn btn-xl bg__btn-gray btn-btn-gray"><i
-                                        class="fas fa-plus fa-lg"></i></button>
-                            <?= $form->field($model, 'rep_scan_hdld')->textInput(['maxlength' => true])->label(false) ?>
+                        <div class="col-sm-9 align-self-center mt-4">
+                             <span class="cursor btn-xl bg__btn-gray btn-btn-gray" id="hdld"><i
+                                         class="fas fa-plus fa-lg"></i></span>
+                            <img src="" id="Hdld" height="60px" alt="">
+                            <?= $form->field($model, 'rep_scan_hdld')->fileinput()->hiddenInput()->label(false) ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">
+                        <label class="col-sm-2 col-form-label">
                             Thành phần hồ sơ khác chứng minh thuộc đối tượng cấp thẻ (nếu có)</label>
                         <div class="col-sm-9 align-self-center">
-                            <button class="btn btn-xl bg__btn-gray btn-btn-gray"><i
-                                        class="fas fa-plus fa-lg"></i></button>
-                            <?= $form->field($model, 'rep_scan_hs_khac')->textInput(['maxlength' => true])->label(false) ?>
+                             <span class="cursor btn-xl bg__btn-gray btn-btn-gray" id="other"><i
+                                         class="fas fa-plus fa-lg"></i></span>
+                            <img src="" id="Other" height="60px" alt="">
+                            <?= $form->field($model, 'rep_scan_hs_khac')->fileinput()->hiddenInput()->label(false) ?>
                         </div>
                     </div>
                 </div>

@@ -2,13 +2,18 @@
 
 namespace backend\controllers;
 
+use backend\models\Reporter;
 use backend\models\Reporterprocess;
 use Yii;
 use backend\models\Reporterdetail;
 use backend\models\ReporterdetailSearch;
+use backend\models\Model;
+use yii\bootstrap4\ActiveForm;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ReporterdetailController implements the CRUD actions for Reporterdetail model.
@@ -53,8 +58,11 @@ class ReporterdetailController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $modelProcess = Reporterprocess::find()->where(['rep_code' => $model->rep_code])->all();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'modelProcess' => $modelProcess,
         ]);
     }
 
@@ -66,12 +74,49 @@ class ReporterdetailController extends Controller
     public function actionCreate()
     {
         $model = new Reporterdetail();
+        $modelRep = new Reporter();
         $modelsProcess = [new Reporterprocess];
         $time = time();
-        $model->created_at = $time;
-        $model->updated_at = $time;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        if ($model->load(Yii::$app->request->post())) {
+            $modelsProcess = Model::createMultiple(Reporterprocess::className());
+            Model::loadMultiple($modelsProcess, Yii::$app->request->post());
+
+            /*Tạo mã phóng viên*/
+            $rep = Reporter::find()->orderBy(['created_at' => SORT_DESC])->one();
+            $id = 1 + (int)substr($rep->rep_code, 2);
+            $rep_code = 'PV' . "" . (string)$id;
+
+            if (Yii::$app->request->isAjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ArrayHelper::merge(
+                    ActiveForm::validateMultiple($modelsProcess),
+                    ActiveForm::validate($model)
+                );
+            }
+
+            /*$valid = $model->validate();
+            $valid = Model::validateMultiple($modelsProcess) && $valid;*/
+
+            $modelRep->rep_code = $rep_code;
+            $modelRep->status = 1;
+            $modelRep->created_at = $time;
+            $modelRep->updated_at = $time;
+            $modelRep->rep_code = $rep_code;
+            if ($modelRep->save()) {
+                $model->rep_code = $modelRep->rep_code;
+                $model->created_at = $time;
+                $model->updated_at = $time;
+                if ($model->save()) {
+                    foreach ($modelsProcess as $processs) {
+                        $processs->rep_code = $model->rep_code;
+                        $processs->save();
+                    }
+                }
+            }
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -79,6 +124,7 @@ class ReporterdetailController extends Controller
             'model' => $model,
             'modelsProcess' => (empty($modelsProcess)) ? [new Reporterprocess] : $modelsProcess,
         ]);
+        die();
     }
 
     /**

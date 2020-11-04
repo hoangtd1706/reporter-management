@@ -24,7 +24,7 @@ class m201027_043303_Reporter_Detail extends Migration
             'rep_name' => $this->string()->notNull(),
             'rep_avt' => $this->string()->notNull(),
             'rep_gender' => $this->boolean()->notNull(),
-            'rep_dob' => $this->integer()->notNull(),
+            'rep_dob' => $this->dateTime()->notNull(),
             'rep_noi_o' => $this->string()->notNull(),
             'rep_chuc_vu' => $this->string(),
             'rep_but_danh' => $this->string(),

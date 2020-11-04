@@ -429,7 +429,7 @@ $config = array(
 
 return array_merge(
 	$config,
-	array(
+	[
 		'ext'=> array_merge(
 			$config['ext_img'],
 			$config['ext_file'],
@@ -438,13 +438,14 @@ return array_merge(
 			$config['ext_music']
 		),
 		// For a list of options see: https://developers.aviary.com/docs/web/setup-guide#constructor-config
-		'aviary_defaults_config' => array(
+		'aviary_defaults_config' => [
 			'apiKey'     => $config['aviary_apiKey'],
 			'language'   => $config['aviary_language'],
 			'theme'      => $config['aviary_theme'],
 			'tools'      => $config['aviary_tools'],
 			'maxSize'    => $config['aviary_maxSize']
-		),
-	)
+		],
+
+	]
 );
 ?>

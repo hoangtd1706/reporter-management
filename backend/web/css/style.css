@@ -123,7 +123,7 @@
 }
 
 .bg__gray {
-  background-color: #f5f3f4;
+  background-color: #f5f3f4 !important;
 }
 .bg__menu {
   background-color: #23527e !important;
@@ -132,20 +132,23 @@
   background-color: #f8f8f8;
 }
 .bg__btn-gray {
-  background-color: #e2e2e2;
+  background-color: #e2e2e2 !important;
 }
 .bg__white {
   background-color: white;
 }
 
 .btn-btn-gray {
-  padding: 16px 40px 16px;
+  padding: 32px 60px 32px;
+  border-radius: 6px;
 }
 .btn-btn-gray1 {
   padding: 16px 20px 6px;
+  border-radius: 6px;
+  text-align: center;
 }
 .btn-button {
-  padding: 8px 20px;
+  padding: 12px 10px 12px;
   border: none;
   border-radius: 10px 10px 0px 0px;
 }
@@ -267,6 +270,13 @@
   height: 100px;
 }
 
+#avatar {
+  width: 180px;
+  height: 200px;
+  background-color: white;
+  margin: 34px 34px 15px;
+}
+
 .rotate-45 {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -282,6 +292,10 @@
 .rotate-180 {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.cursor {
+  cursor: pointer;
 }
 
 .table-cus {

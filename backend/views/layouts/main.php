@@ -67,73 +67,7 @@ $baseUrl = str_replace('/backend/web','',Yii::$app->urlManager->getBaseUrl());
         </main>
     </div>
 </div>
-
-<!--Modal ảnh 3x4-->
-<div class="modal fade" id="modelAvatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Chọn ảnh 3x4</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <iframe  width="100%" height="550" frameborder="0"
-                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_avt">
-                </iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Modal ảnh mặt trước CMND-->
-<div class="modal fade" id="modelCIDFront" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Upload CMND mặt trước</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <iframe  width="100%" height="550" frameborder="0"
-                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_cmnd_front">
-                </iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Modal ảnh mặt sau CMND-->
-<div class="modal fade" id="modelCIDBack" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Upload CMND mặt sau</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <iframe  width="100%" height="550" frameborder="0"
-                         src="<?php echo $baseUrl; ?>/file/dialog.php?type=0&field_id=reporterdetail-rep_cmnd_back">
-                </iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+<?= $this->render('_modal') ?>
 <?php $this->endBody() ?>
 </body>
 </html>

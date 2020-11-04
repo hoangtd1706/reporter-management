@@ -132,7 +132,7 @@
   background-color: #f8f8f8;
 }
 .bg__btn-gray {
-  background-color: #e2e2e2;
+  background-color: #e2e2e2 !important;
 }
 .bg__white {
   background-color: white;
